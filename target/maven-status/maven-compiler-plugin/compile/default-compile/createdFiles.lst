@@ -1,0 +1,16 @@
+domain\Pizza$type.class
+infrastructure\Config.class
+domain\Order.class
+infrastructure\ObjectFactory.class
+infrastructure\JavaConfig.class
+repository\OrderRepository.class
+domain\Customer.class
+repository\TestPizzaRepository.class
+infrastructure\ApplicationContext.class
+repository\TestOrderRepository.class
+services\SimpleOrderService.class
+domain\Pizza.class
+services\PizzaApp.class
+services\OrderService.class
+infrastructure\JavaConfigApplicationContext.class
+repository\PizzaRepository.class
