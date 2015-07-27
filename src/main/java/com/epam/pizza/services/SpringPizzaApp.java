@@ -14,7 +14,9 @@ import java.util.List;
  */
 public class SpringPizzaApp {
     public static void main (String args []){
-        ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext("appContext.xml");
+        ConfigurableApplicationContext repositoryContext = new ClassPathXmlApplicationContext("repositoryContext.xml");
+        ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext(new String[]{"appContext.xml"}, repositoryContext);
+
         PizzaRepository pizzaRepository = (PizzaRepository)appContext.getBean("pizzaRepository");
         System.out.println(pizzaRepository);
         String[] beans = appContext.getBeanDefinitionNames();
@@ -26,9 +28,12 @@ public class SpringPizzaApp {
         OrderService orderService = (OrderService)appContext.getBean("simpleOrderService");
         order = orderService.placeNewOrder(customer, 1, 2, 3);
         System.out.println(order);
+        System.out.println(appContext.getBean("Order", Order.class));
+        System.out.println(appContext.getBean("Order", Order.class));
 //        List<Pizza> pizzas = (List)appContext.getBean("pizzas");
 //        System.out.println(pizzas);
 
-        appContext.close();
+                appContext.close();
+        repositoryContext.close();
     }
 }

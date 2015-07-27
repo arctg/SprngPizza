@@ -87,34 +87,21 @@ public class JavaConfigApplicationContext implements ApplicationContext {
 
         }
         public void createProxy(){
-            Class<?> clazz = obj.getClass();
-            for (Method m:clazz.getMethods()){
-                if(m.isAnnotationPresent(Benchmark.class)){
-                    obj=createProxyObj(obj);
-                }
-            }
+            ProxyForBenchmarkAnnotation proxyForBenchmarkAnnotation = new ProxyForBenchmarkAnnotation();
+            obj = proxyForBenchmarkAnnotation.checkAndCreateProxyObjForBenchmark(obj);
         }
 
-        private Object createProxyObj(final Object o) {
-            final Class<?> type = o.getClass();
-            return Proxy.newProxyInstance(type.getClassLoader(), type.getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(
-                        Object proxy,
-                        Method method,
-                        Object[] args) throws Throwable {
-                    if (type.getMethod(method.getName(),method.getParameterTypes()).isAnnotationPresent(Benchmark.class)) {
-                        System.out.println("Behchmark start " + method.getName());
-                        long start = System.nanoTime();
-                        Object retVal = method.invoke(o, args);
-                        long result = System.nanoTime() - start;
-                        System.out.println("Benchmark has finished, result is: " + result);
-                        return retVal;
-                    } else
-                        return method.invoke(o,args);
-                }
-            });
-        }
+//        private Object checkAndCreateProxyObjForBenchmark(Object object) throws IllegalArgumentException{
+//            Class<?> clazz = obj.getClass();
+//            for (Method m:clazz.getMethods()){
+//                if(m.isAnnotationPresent(Benchmark.class)){
+//                    obj=createProxyObj(obj);
+//                }
+//            }
+//            return obj;
+//        }
+
+
         public void callInitMethod() throws Exception{
             Class<?> clazz = obj.getClass();
             Method method;

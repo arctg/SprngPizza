@@ -1,6 +1,7 @@
 package com.epam.pizza.repository;
 
 import com.epam.pizza.domain.Pizza;
+import com.epam.pizza.infrastructure.Benchmark;
 
 import java.util.Arrays;
 import java.util.List;

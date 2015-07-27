@@ -6,41 +6,42 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
-    <bean name="pizzaRepository" class="com.epam.pizza.repository.TestPizzaRepository" init-method="init"/>
-    <bean name="orderRepository" class="com.epam.pizza.repository.TestOrderRepository"/>
 
-    <!--<bean id="SeaPizza" class="com.epam.pizza.domain.Pizza">-->
-        <!--<property name="id" value="1"/>-->
-        <!--<property name="name" value="Sea"/>-->
-        <!--<property name="price" value="100"/>-->
+    <bean id="SeaPizza" class="com.epam.pizza.domain.Pizza">
+        <property name="id" value="1"/>
+        <property name="name" value="Sea"/>
+        <property name="price" value="100"/>
 
-    <!--</bean>-->
+    </bean>
 
-    <!--<bean id="VegPizza" class="com.epam.pizza.domain.Pizza">-->
-        <!--<property name="id" value="1"/>-->
-        <!--<property name="name" value="Veg"/>-->
-        <!--<property name="price" value="200"/>-->
-    <!--</bean>-->
+    <bean id="VegPizza" class="com.epam.pizza.domain.Pizza">
+        <property name="id" value="1"/>
+        <property name="name" value="Veg"/>
+        <property name="price" value="200"/>
+    </bean>
 
-    <!--<bean id="MeatPizza" class="com.epam.pizza.domain.Pizza">-->
-        <!--<property name="id" value="1"/>-->
-        <!--<property name="name" value="Meat"/>-->
-        <!--<property name="price" value="300"/>-->
-    <!--</bean>-->
+    <bean id="MeatPizza" class="com.epam.pizza.domain.Pizza">
+        <property name="id" value="1"/>
+        <property name="name" value="Meat"/>
+        <property name="price" value="300"/>
+    </bean>
 
 
-    <!--<util:list id="pizzas">-->
-        <!--<value>1</value>-->
-        <!--<ref bean="SeaPizza" />-->
-        <!--<value>2</value>-->
-        <!--<ref bean="VegPizza"/>-->
-        <!--<value>3</value>-->
-        <!--<ref bean="MeatPizza"/>-->
-    <!--</util:list>-->
+    <util:list id="pizzas">
+        <value>1</value>
+        <ref bean="SeaPizza" />
+        <value>2</value>
+        <ref bean="VegPizza"/>
+        <value>3</value>
+        <ref bean="MeatPizza"/>
+    </util:list>
 
+    <bean name="Order" class="com.epam.pizza.domain.Order" scope="prototype" destroy-method="destroy"/>
 
-    <bean name="simpleOrderService" class="com.epam.pizza.services.SimpleOrderService">
-        <constructor-arg ref="pizzaRepository"/>
-        <constructor-arg ref="orderRepository"/>
+    <bean name="simpleOrderService" class="com.epam.pizza.services.SimpleOrderService" autowire="constructor">
+        <!--<constructor-arg ref="pizzaRepository"/>-->
+        <!--<constructor-arg ref="orderRepository"/>-->
+
+        <lookup-method name="getNewOrder" bean="Order"/>
     </bean>
 </beans>
