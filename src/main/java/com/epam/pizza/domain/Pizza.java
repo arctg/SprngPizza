@@ -10,10 +10,16 @@ public class Pizza {
     public enum type {Vegetarian, Sea, Meat}
     type PizzaType;
 
+    public Pizza(){
+        System.out.println("Hello");
+    }
+
+
     public Pizza(int id, String name,int price, type PizzaType){
         this.id = id;
         this.name = name;
         this.PizzaType = PizzaType;
+        this.price = price;
     }
 
     @Override
@@ -40,6 +46,14 @@ public class Pizza {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
 }

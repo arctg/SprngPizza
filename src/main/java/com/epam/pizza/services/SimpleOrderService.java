@@ -3,6 +3,7 @@ package com.epam.pizza.services;
 import com.epam.pizza.domain.Customer;
 import com.epam.pizza.domain.Order;
 import com.epam.pizza.domain.Pizza;
+import com.epam.pizza.infrastructure.Benchmark;
 import com.epam.pizza.repository.OrderRepository;
 import com.epam.pizza.repository.PizzaRepository;
 import com.epam.pizza.repository.TestOrderRepository;
@@ -29,7 +30,7 @@ public class SimpleOrderService implements OrderService {
 //        pizzaRepository = (PizzaRepository)objectFactory.createObject("pizzaRepository");
 //        orderRepository = (OrderRepository)objectFactory.createObject("orderRepository");
     }
-
+@Benchmark
     public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
 

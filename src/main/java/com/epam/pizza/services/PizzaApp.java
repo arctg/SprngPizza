@@ -20,7 +20,7 @@ public class PizzaApp {
         ApplicationContext context = new JavaConfigApplicationContext(config);
         OrderService orderService = (OrderService)context.getBean("orderService");
         order = orderService.placeNewOrder(customer, 1, 2, 3);
-        System.out.println(orderService);
+        //System.out.println(orderService);
         System.out.println(order);
     }
 }
