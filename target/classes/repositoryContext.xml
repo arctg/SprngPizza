@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean name="pizzaRepository" class="com.epam.pizza.repository.TestPizzaRepository">
+        <property name="pizzas">
+            <list>
+                <bean id="SeaPizza" class="com.epam.pizza.domain.Pizza">
+                    <property name="id" value="1"/>
+                    <property name="name" value="Sea"/>
+                    <property name="price" value="100"/>
+                </bean>
+
+                <bean id="VegPizza" class="com.epam.pizza.domain.Pizza">
+                    <property name="id" value="2"/>
+                    <property name="name" value="Veg"/>
+                    <property name="price" value="200"/>
+                </bean>
+
+                <bean id="MeatPizza" class="com.epam.pizza.domain.Pizza">
+                    <property name="id" value="3"/>
+                    <property name="name" value="Meat"/>
+                    <property name="price" value="300"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean name="orderRepository" class="com.epam.pizza.repository.TestOrderRepository"/>
+
+
+</beans>

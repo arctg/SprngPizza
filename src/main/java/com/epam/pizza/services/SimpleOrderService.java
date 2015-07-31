@@ -25,6 +25,8 @@ public class SimpleOrderService implements OrderService {
         private PizzaRepository pizzaRepository = new TestPizzaRepository();
         private ApplicationContext appContext;
 
+    public SimpleOrderService(){};
+
     public SimpleOrderService(
             PizzaRepository pizzaRepository,
             OrderRepository orderRepository) throws Exception{
