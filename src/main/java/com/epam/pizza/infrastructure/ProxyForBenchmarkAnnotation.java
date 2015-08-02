@@ -3,6 +3,9 @@ package com.epam.pizza.infrastructure;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by dennis on 7/27/2015.
@@ -40,4 +43,24 @@ public class ProxyForBenchmarkAnnotation {
             }
         });
     }
+
+
+//    private Class<?>[] getInterfaces(Class<?> type) {
+//
+//        List<Class<?>> allInterfaces = new ArrayList<>();
+//        Class<?>[] interfaces = type.getInterfaces();
+//        allInterfaces.addAll(Arrays.asList(interfaces));
+//
+//        Class<?> superClass = type.getSuperclass();
+//        if (superClass != null) {
+//            allInterfaces.addAll(Arrays.asList(getInterfaces(superClass)));
+//        }
+//
+//        Class<?>[] result = new Class<?>[allInterfaces.size()];
+//        for (int i = 0; i < allInterfaces.size(); ++i) {
+//            result[i] = allInterfaces.get(i);
+//        }
+//
+//        return result;
+//    }
 }

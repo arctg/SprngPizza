@@ -8,6 +8,13 @@ import java.util.List;
  */
 public class Order {
     int id;
+    List<Pizza> pizza;
+    Customer customer;
+    private String name;
+    static int count;
+
+
+    Order(){}
 
     public List<Pizza> getPizza() {
         return pizza;
@@ -25,8 +32,6 @@ public class Order {
         this.customer = customer;
     }
 
-    List<Pizza> pizza;
-    Customer customer;
 
     public String getName() {
         return name;
@@ -34,14 +39,6 @@ public class Order {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private String name;
-    static int count;
-
-    Order(){
-        id = new Date().hashCode();
-        name = Integer.toString(count++);
     }
 
     public int getId() {

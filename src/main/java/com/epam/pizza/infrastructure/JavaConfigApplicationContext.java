@@ -25,7 +25,6 @@ public class JavaConfigApplicationContext implements ApplicationContext {
         if (bean !=null){
             return bean;
         }
-
         BeanBuilder beanBuilder = new BeanBuilder(beanName);
         beanBuilder.createObject();
         beanBuilder.createProxy();

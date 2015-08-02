@@ -21,32 +21,29 @@ public class SimpleOrderService implements OrderService {
 
     //private ObjectFactory objectFactory = ObjectFactory.getInstance();
 
-        private OrderRepository orderRepository  = new TestOrderRepository();
-        private PizzaRepository pizzaRepository = new TestPizzaRepository();
-        private ApplicationContext appContext;
+    private OrderRepository orderRepository = new TestOrderRepository();
+    private PizzaRepository pizzaRepository = new TestPizzaRepository();
+    //private ApplicationContext appContext;
 
-    public SimpleOrderService(){};
+    SimpleOrderService(){}
 
     public SimpleOrderService(
             PizzaRepository pizzaRepository,
-            OrderRepository orderRepository) throws Exception{
+            OrderRepository orderRepository) throws Exception {
         this.pizzaRepository = pizzaRepository;
         this.orderRepository = orderRepository;
 //        pizzaRepository = (PizzaRepository)objectFactory.createObject("pizzaRepository");
 //        orderRepository = (OrderRepository)objectFactory.createObject("orderRepository");
     }
-@Benchmark
-    public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
+    @Override
+    @Benchmark
+    public Order placeNewOrder(Customer customer, Integer... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
-
-        for(Integer id : pizzasID){
+        for (Integer id : pizzasID) {
             pizzas.add(pizzaRepository.getPizzaById(id));  // get com.epam.pizza.domain.Pizza from predifined in-memory list
         }
-    Order newOrder = getNewOrder();
-    newOrder.setCustomer(customer);
-    newOrder.setPizza(pizzas);
-
-    orderRepository.saveOrder(newOrder);  // set com.epam.pizza.domain.Order Id and save com.epam.pizza.domain.Order to in-memory list
+        Order newOrder = new Order(customer,pizzas);
+        orderRepository.saveOrder(newOrder);  // set com.epam.pizza.domain.Order Id and save com.epam.pizza.domain.Order to in-memory list
         return newOrder;
     }
 
@@ -55,7 +52,7 @@ public class SimpleOrderService implements OrderService {
         return null;
     }
 
-    public void setApplicationContext(ApplicationContext ac){
-        this.appContext=ac;
-    }
+//    public void setApplicationContext(ApplicationContext ac) {
+//        this.appContext = ac;
+//    }
 }

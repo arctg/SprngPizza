@@ -12,7 +12,6 @@ import java.util.List;
 public class TestOrderRepository implements OrderRepository {
 
     List<Order> orders = new ArrayList<Order>();
-@Benchmark
     public void saveOrder(Order newOrder){
         newOrder.setId(orders.size() + 1);
         orders.add(newOrder);

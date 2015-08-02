@@ -7,18 +7,20 @@ public class Pizza {
     int id;
     String name;
     int price;
-    public enum type {Vegetarian, Sea, Meat}
-    type PizzaType;
+//    public enum type {Vegetarian, Sea, Meat}
+    //type PizzaType;
+    PizzaType type;
 
-    public Pizza(){
-        System.out.println("Hello");
-    }
+//    public Pizza(){
+//        System.out.println("Hello");
+//    }
 
 
-    public Pizza(int id, String name,int price, type PizzaType){
+
+    public Pizza(int id, String name,int price,  PizzaType type){
         this.id = id;
         this.name = name;
-        this.PizzaType = PizzaType;
+        this.type = type;
         this.price = price;
     }
 
@@ -28,7 +30,7 @@ public class Pizza {
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", price=" + price +
-                ", PizzaType=" + PizzaType +
+                ", PizzaType=" + type.toString() +
                 '}';
     }
 
@@ -54,6 +56,14 @@ public class Pizza {
 
     public int getPrice() {
         return price;
+    }
+
+    public PizzaType getPizzaType() {
+        return type;
+    }
+
+    public void setPizzaType(PizzaType type) {
+        this.type = type;
     }
 
 }

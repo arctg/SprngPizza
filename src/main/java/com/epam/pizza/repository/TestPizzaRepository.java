@@ -15,14 +15,12 @@ public class TestPizzaRepository implements PizzaRepository {
 
 
 
-    public void init (List<Pizza> pizzas){
+    public void init (){
 //        pizzas = Arrays.asList(
 //                new Pizza(1, "Meat", 200, Pizza.type.Meat),
 //                new Pizza(2, "Sea", 300, Pizza.type.Sea),
-//                new Pizza(3, "Veg", 400,Pizza.type.Vegetarian));
-        this.pizzas=pizzas;
-
-
+////                new Pizza(3, "Veg", 400,Pizza.type.Vegetarian));
+//        this.pizzas=pizzas;
     }
 
     public List<Pizza> getPizzas() {

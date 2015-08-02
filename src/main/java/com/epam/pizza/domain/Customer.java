@@ -4,6 +4,14 @@ package com.epam.pizza.domain;
  * Created by dennis on 7/23/2015.
  */
 public class Customer {
+    int id;
+    String name;
+
+    public Customer(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -12,14 +20,20 @@ public class Customer {
         this.id = id;
     }
 
-    int id;
-    String name;
+    public String getName() {
+        return name;
+    }
 
-
-
-
-    public Customer(int id, String name){
-        this.id = id;
+    public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+

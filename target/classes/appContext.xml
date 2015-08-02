@@ -6,15 +6,12 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
-
-
-
-    <bean name="Order" class="com.epam.pizza.domain.Order" scope="prototype" destroy-method="destroy"/>
+    <bean class="com.epam.pizza.infrastructure.BenchmarkBeanPostProcessor"/>
 
     <bean name="orderService" class="com.epam.pizza.services.SimpleOrderService" autowire="constructor">
-        <!--<constructor-arg ref="pizzaRepository"/>-->
-        <!--<constructor-arg ref="orderRepository"/>-->
-
-        <lookup-method name="getNewOrder" bean="Order"/>
+        <lookup-method name="getNewOrder" bean="order"/>
     </bean>
+
+    <bean name="order" class="com.epam.pizza.domain.Order" scope="prototype" destroy-method="destroy"/>
+
 </beans>

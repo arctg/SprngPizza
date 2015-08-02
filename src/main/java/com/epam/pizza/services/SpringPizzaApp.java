@@ -13,27 +13,26 @@ import java.util.List;
  * Created by dennis on 7/24/2015.
  */
 public class SpringPizzaApp {
-    public static void main (String args []){
+    public static void main(String args[]) {
         ConfigurableApplicationContext repositoryContext = new ClassPathXmlApplicationContext("repositoryContext.xml");
         ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext(new String[]{"appContext.xml"}, repositoryContext);
 
-        PizzaRepository pizzaRepository = (PizzaRepository)appContext.getBean("pizzaRepository");
+        PizzaRepository pizzaRepository = (PizzaRepository) appContext.getBean("pizzaRepository");
         System.out.println(pizzaRepository);
         String[] beans = appContext.getBeanDefinitionNames();
-        for(String b:beans){
+        for (String b : beans) {
             System.out.println(b);
         }
-        Customer customer = new Customer(1,"Bruce");
+        Customer customer = new Customer(1, "Bruce");
         Order order;
-        OrderService orderService = (OrderService)appContext.getBean("orderService");
+        OrderService orderService =  appContext.getBean("orderService",OrderService.class);
         order = orderService.placeNewOrder(customer, 1, 2, 3);
         System.out.println(order);
-        System.out.println(appContext.getBean("Order", Order.class));
-        System.out.println(appContext.getBean("Order", Order.class));
+        //System.out.println(appContext.getBean("order", Order.class));
 //        List<Pizza> pizzas = (List)appContext.getBean("pizzas");
 //        System.out.println(pizzas);
 
-                appContext.close();
+        appContext.close();
         repositoryContext.close();
     }
 }

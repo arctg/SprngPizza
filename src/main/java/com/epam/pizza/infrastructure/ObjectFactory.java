@@ -19,8 +19,8 @@ public class ObjectFactory {
         return instance;
     }
 
-    public Object createObject(String pizzaRepository) throws Exception{
-        Class<?> clazz = config.getImplementation(pizzaRepository);
+    public Object createObject(String someString) throws Exception{
+        Class<?> clazz = config.getImplementation(someString);
         return clazz.newInstance();
     }
 }
