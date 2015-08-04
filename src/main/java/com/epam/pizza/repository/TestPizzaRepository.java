@@ -30,7 +30,7 @@ public class TestPizzaRepository implements PizzaRepository {
     public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
     }
-
+@Benchmark
     public Pizza getPizzaById(int id){
         for(Pizza p:pizzas ){
             if (id==p.getId()){

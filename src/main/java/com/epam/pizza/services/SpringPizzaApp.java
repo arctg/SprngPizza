@@ -20,12 +20,14 @@ public class SpringPizzaApp {
         PizzaRepository pizzaRepository = (PizzaRepository) appContext.getBean("pizzaRepository");
         System.out.println(pizzaRepository);
         String[] beans = appContext.getBeanDefinitionNames();
+        System.out.println("Context start");
         for (String b : beans) {
             System.out.println(b);
         }
+        System.out.println("Context end");
         Customer customer = new Customer(1, "Bruce");
         Order order;
-        OrderService orderService =  appContext.getBean("orderService",OrderService.class);
+        OrderService orderService = appContext.getBean(OrderService.class);
         order = orderService.placeNewOrder(customer, 1, 2, 3);
         System.out.println(order);
         //System.out.println(appContext.getBean("order", Order.class));

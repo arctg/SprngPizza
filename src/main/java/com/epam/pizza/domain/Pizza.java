@@ -17,7 +17,7 @@ public class Pizza {
 
 
 
-    public Pizza(int id, String name,int price,  PizzaType type){
+    public Pizza(int id, String name, int price,  PizzaType type){
         this.id = id;
         this.name = name;
         this.type = type;

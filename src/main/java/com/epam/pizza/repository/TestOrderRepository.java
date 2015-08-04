@@ -2,6 +2,7 @@ package com.epam.pizza.repository;
 
 import com.epam.pizza.domain.Order;
 import com.epam.pizza.infrastructure.Benchmark;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by dennis on 7/23/2015.
  */
+@Repository
 public class TestOrderRepository implements OrderRepository {
 
     List<Order> orders = new ArrayList<Order>();

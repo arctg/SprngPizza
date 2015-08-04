@@ -9,7 +9,13 @@ import com.epam.pizza.repository.OrderRepository;
 import com.epam.pizza.repository.PizzaRepository;
 import com.epam.pizza.repository.TestOrderRepository;
 import com.epam.pizza.repository.TestPizzaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +23,7 @@ import java.util.List;
 /**
  * Created by dennis on 7/23/2015.
  */
+@Service
 public class SimpleOrderService implements OrderService {
 
     //private ObjectFactory objectFactory = ObjectFactory.getInstance();
@@ -26,7 +33,7 @@ public class SimpleOrderService implements OrderService {
     //private ApplicationContext appContext;
 
     SimpleOrderService(){}
-
+   @Autowired
     public SimpleOrderService(
             PizzaRepository pizzaRepository,
             OrderRepository orderRepository) throws Exception {
@@ -35,8 +42,16 @@ public class SimpleOrderService implements OrderService {
 //        pizzaRepository = (PizzaRepository)objectFactory.createObject("pizzaRepository");
 //        orderRepository = (OrderRepository)objectFactory.createObject("orderRepository");
     }
-    @Override
-    @Benchmark
+
+    //@Required
+    public void setPizzaRepository(PizzaRepository pizzaRepository){
+        System.out.println("PizzaRepo test method");
+        this.pizzaRepository = pizzaRepository;
+    }
+
+
+//    @Override
+//    @Benchmark
     public Order placeNewOrder(Customer customer, Integer... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
         for (Integer id : pizzasID) {
@@ -46,7 +61,7 @@ public class SimpleOrderService implements OrderService {
         orderRepository.saveOrder(newOrder);  // set com.epam.pizza.domain.Order Id and save com.epam.pizza.domain.Order to in-memory list
         return newOrder;
     }
-
+@Lookup(value = "order")
     protected Order getNewOrder() {
         //Order newOrder = appContext.getBean("Order",Order.class);
         return null;

@@ -1,11 +1,16 @@
 package com.epam.pizza.domain;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by dennis on 7/23/2015.
  */
+@Component(value = "order")
+@Scope(value = "prototype")
 public class Order {
     int id;
     List<Pizza> pizza;
