@@ -106,7 +106,7 @@ public class TotalOrderCostCalculatorTest {
         map.put(new Pizza(1,"SeaSee",pizzaPrice,PizzaType.SEA),1);
 
         pizzaPrice = 50;
-        map.put(new Pizza(1,"SeaSee",pizzaPrice,PizzaType.VEGETERIAN),1);
+        map.put(new Pizza(1,"Down",pizzaPrice,PizzaType.VEGETERIAN),1);
 
         int expectedPrice = 690;
 

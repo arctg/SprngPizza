@@ -1,19 +1,25 @@
 package com.epam.pizza.domain;
 
+import javax.persistence.*;
+
 /**
  * Created by dennis on 7/23/2015.
  */
+@Entity
+@Table(name = "pizzas")
+@NamedQuery(name="Pizza.getAll",query = "select p from Pizza p")
 public class Pizza {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    @Column(name="name", length = 32)
     String name;
+    @Column(name="price")
     int price;
-//    public enum type {Vegetarian, Sea, Meat}
-    //type PizzaType;
+    @Enumerated(EnumType.STRING)
     PizzaType type;
 
-//    public Pizza(){
-//        System.out.println("Hello");
-//    }
+    public Pizza(){}
 
 
 

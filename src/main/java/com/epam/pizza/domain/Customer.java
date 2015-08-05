@@ -6,10 +6,12 @@ package com.epam.pizza.domain;
 public class Customer {
     int id;
     String name;
+    AccumulativeCard accumulativeCard;
 
-    public Customer(int id, String name){
+    public Customer(int id, String name, AccumulativeCard accumulativeCard){
         this.id = id;
         this.name = name;
+        this.accumulativeCard = accumulativeCard;
     }
 
     public int getId() {
@@ -26,6 +28,14 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AccumulativeCard getAccumulativeCard() {
+        return accumulativeCard;
+    }
+
+    public void setAccumulativeCard(AccumulativeCard accumulativeCard) {
+        this.accumulativeCard = accumulativeCard;
     }
 
     @Override
