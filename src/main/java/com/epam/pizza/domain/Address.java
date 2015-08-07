@@ -1,15 +1,20 @@
 package com.epam.pizza.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by dennis on 8/4/2015.
  */
 @Entity
+@Table(name = "addresses")
+@NamedQueries({
+        @NamedQuery(name = "Address.getAll", query = "select a from Address a"),
+        //Other named query
+})
 public class Address {
     @Id
-    private int id;
+    @Column(name = "address_id")
+    private Integer id;
     private String city;
     private String street;
     private String building;
@@ -25,6 +30,14 @@ public class Address {
         this.building = building;
         this.apartment = apartment;
         this.porch = porch;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCity() {

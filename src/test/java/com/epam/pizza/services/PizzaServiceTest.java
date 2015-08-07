@@ -2,8 +2,10 @@ package com.epam.pizza.services;
 
 import com.epam.pizza.domain.Pizza;
 import com.epam.pizza.domain.PizzaType;
+import com.epam.pizza.services.impl.PizzaService;
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by dennis on 8/4/2015.
@@ -13,11 +15,12 @@ public class PizzaServiceTest extends TestCase {
     PizzaService service = new PizzaService();
 
     @Test
+    @Transactional
     public void testAdd() throws Exception {
         Pizza pizza1 = new Pizza();
-        pizza1.setName("BeAStupid");
-        pizza1.setPrice(70);
-        pizza1.setPizzaType(PizzaType.VEGETERIAN);
+        pizza1.setName("BeAHulk");
+        pizza1.setPrice(700);
+        pizza1.setPizzaType(PizzaType.MEAT);
         Pizza pizza = service.add(pizza1);
         System.out.println(pizza);
 
@@ -36,6 +39,7 @@ public class PizzaServiceTest extends TestCase {
     }
 
     public void testGetAll() throws Exception {
+
 
     }
 }

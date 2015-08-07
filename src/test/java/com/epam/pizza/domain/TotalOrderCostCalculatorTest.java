@@ -1,5 +1,6 @@
 package com.epam.pizza.domain;
 
+import com.epam.pizza.templates.RepositoryTestsTemplate;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * Created by dennis on 8/3/2015.
  */
 
-public class TotalOrderCostCalculatorTest {
+public class TotalOrderCostCalculatorTest{
 
 //    @Test
 //    public void testCalculateTotalOrderPrice__NonePizzas(){

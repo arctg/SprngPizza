@@ -1,24 +1,46 @@
 package com.epam.pizza.domain;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by dennis on 7/23/2015.
  */
+@Entity
+@Table(name = "customers")
+@NamedQueries({
+        @NamedQuery(name = "Customer.getAll", query = "select c from Customer c"),
+        //Other named query
+})
 public class Customer {
-    int id;
+    @Id
+    @Column(name = "customer_id")
+    Integer id;
     String name;
-    AccumulativeCard accumulativeCard;
+    @OneToOne
+    @JoinColumn(name="card_id")
+    private AccumulativeCard accumulativeCard;
+//    @OneToOne
+//    @JoinColumn(name="address_id")
+//    private Address address;
 
-    public Customer(int id, String name, AccumulativeCard accumulativeCard){
+    public Customer(){}
+
+    public Customer(Integer id, String name, AccumulativeCard accumulativeCard){
         this.id = id;
         this.name = name;
         this.accumulativeCard = accumulativeCard;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

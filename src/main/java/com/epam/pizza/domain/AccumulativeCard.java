@@ -1,14 +1,24 @@
 package com.epam.pizza.domain;
 
+
+import javax.persistence.*;
+
 /**
  * Created by dennis on 8/4/2015.
  */
+@Entity
+@Table(name = "accucards")
+@NamedQueries({
+        @NamedQuery(name = "AccumulativeCard.getAll", query = "select a from Address a"),
+        //Other named query
+})
 public class AccumulativeCard {
-
+    @Id
+    @Column(name = "card_id")
     private Integer id;
-
+    @OneToOne()
+    @JoinColumn(name="address_id")
     private Address address;
-
     private Integer accumulatedSumm;
 
     public AccumulativeCard(){}

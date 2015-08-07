@@ -7,23 +7,26 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "pizzas")
-@NamedQuery(name="Pizza.getAll",query = "select p from Pizza p")
+@NamedQueries({
+        @NamedQuery(name = "Pizza.getAll", query = "select p from Pizza p"),
+        //@NamedQuery(name = "Pizza.getById", query = "select p from Pizza p where id=?")
+})
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    @Column(name="name", length = 32)
+    Integer id;
+    @Column(name = "name", length = 32)
     String name;
-    @Column(name="price")
-    int price;
+    @Column(name = "price")
+    Integer price;
     @Enumerated(EnumType.STRING)
     PizzaType type;
 
-    public Pizza(){}
+    public Pizza() {
+    }
 
 
-
-    public Pizza(int id, String name, int price,  PizzaType type){
+    public Pizza(Integer id, String name, Integer price, PizzaType type) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -40,11 +43,11 @@ public class Pizza {
                 '}';
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,7 +63,7 @@ public class Pizza {
         this.price = price;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
@@ -72,4 +75,26 @@ public class Pizza {
         this.type = type;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pizza pizza = (Pizza) o;
+
+        if (!id.equals(pizza.id)) return false;
+        if (!name.equals(pizza.name)) return false;
+        if (!price.equals(pizza.price)) return false;
+        return type == pizza.type;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + price.hashCode();
+        result = 31 * result + type.hashCode();
+        return result;
+    }
 }
