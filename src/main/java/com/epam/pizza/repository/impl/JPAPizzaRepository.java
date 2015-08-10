@@ -32,8 +32,18 @@ public class JPAPizzaRepository implements PizzaRepository {
     @Override
     @Transactional
     public Integer save(Pizza pizza){
-        em.persist(pizza);
+        if (pizza.getId() != null) {
+            em.merge(pizza);
+        } else {
+            em.persist(pizza);
+        }
         return pizza.getId();
+    }
+
+    @Override
+    @Transactional
+    public void update(Pizza pizza){
+        em.merge(pizza);
     }
 
 

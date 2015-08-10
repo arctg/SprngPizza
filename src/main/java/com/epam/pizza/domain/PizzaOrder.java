@@ -14,6 +14,8 @@ import java.util.Map;
 })
 public class PizzaOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Integer pizzaOrderId;
     @ElementCollection
     @CollectionTable(name="pizzas_and_count")

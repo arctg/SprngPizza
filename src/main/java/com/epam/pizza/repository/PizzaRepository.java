@@ -11,4 +11,5 @@ public interface PizzaRepository {
     public Pizza getPizzaById(Integer id);
     public List<Pizza> getAllPizzas();
     public Integer save(Pizza pizza);
+    public void update(Pizza pizza);
 }

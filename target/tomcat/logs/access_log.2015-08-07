@@ -230,3 +230,12 @@
 0:0:0:0:0:0:0:1 - - [07/Aug/2015:18:27:45 +0300] "GET /New/jsp/hello HTTP/1.1" 200 15 http-bio-8080-exec-4 10
 0:0:0:0:0:0:0:1 - - [07/Aug/2015:18:28:29 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 125 http-bio-8080-exec-5 8
 0:0:0:0:0:0:0:1 - - [07/Aug/2015:18:29:12 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-1 1529
+127.0.0.1 - - [07/Aug/2015:19:05:44 +0300] "GET /New/ HTTP/1.1" 200 113 http-bio-8080-exec-1 158
+127.0.0.1 - - [07/Aug/2015:19:05:44 +0300] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-2 0
+127.0.0.1 - - [07/Aug/2015:19:05:44 +0300] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+127.0.0.1 - - [07/Aug/2015:19:05:50 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-4 323
+127.0.0.1 - - [07/Aug/2015:19:45:45 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-6 8
+127.0.0.1 - - [07/Aug/2015:19:48:10 +0300] "GET /New/jsp/pizzas HTTP/1.1" 500 18690 http-bio-8080-exec-8 33
+127.0.0.1 - - [07/Aug/2015:19:48:39 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-1 526
+127.0.0.1 - - [07/Aug/2015:19:52:51 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-1 494
+127.0.0.1 - - [07/Aug/2015:20:16:21 +0300] "GET /New/jsp/pizzas HTTP/1.1" 200 330 http-bio-8080-exec-3 14

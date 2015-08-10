@@ -29,6 +29,7 @@ com\epam\pizza\services\CustomerService.class
 com\epam\pizza\services\OrderService.class
 com\epam\pizza\domain\Customer.class
 com\epam\pizza\infrastructure\Config.class
+com\epam\pizza\web\PizzaController.class
 com\epam\pizza\infrastructure\ApplicationContext.class
 com\epam\pizza\repository\impl\JPAAddressRepository.class
 com\epam\pizza\domain\Address.class

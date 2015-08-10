@@ -48,4 +48,8 @@ public class TestPizzaRepository implements PizzaRepository {
     public Integer save(Pizza pizza){
         return null;
     }
+
+    public void update(Pizza pizza){
+
+    }
 }

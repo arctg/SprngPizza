@@ -15,6 +15,7 @@ import javax.persistence.*;
 public class AccumulativeCard {
     @Id
     @Column(name = "card_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne()
     @JoinColumn(name="address_id")
