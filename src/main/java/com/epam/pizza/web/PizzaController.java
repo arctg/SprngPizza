@@ -1,6 +1,7 @@
 package com.epam.pizza.web;
 
 import com.epam.pizza.domain.Pizza;
+import com.epam.pizza.domain.PizzaType;
 import com.epam.pizza.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,13 @@ public class PizzaController {
     @RequestMapping(value = "/pizzas", method = RequestMethod.GET)
     public String viewPizzas(Model model) {
         model.addAttribute("pizzas", pizzaService.getAllPizzas());
+        model.addAttribute("pizzaTypes", PizzaType.values());
         return "pizzas";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addNewPizza(Model model) {
+        model.addAttribute("pizzaTypes", PizzaType.values());
         return "create";
     }
 
