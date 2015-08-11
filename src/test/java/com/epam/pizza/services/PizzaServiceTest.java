@@ -2,7 +2,7 @@ package com.epam.pizza.services;
 
 import com.epam.pizza.domain.Pizza;
 import com.epam.pizza.domain.PizzaType;
-import com.epam.pizza.services.impl.PizzaService;
+import com.epam.pizza.services.impl.PizzaServiceImpl;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class PizzaServiceTest extends TestCase {
 
-    PizzaService service = new PizzaService();
+    PizzaServiceImpl service = new PizzaServiceImpl();
 
     @Test
     @Transactional

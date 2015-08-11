@@ -6,13 +6,16 @@ C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\Config.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\impl\JavaConfig.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\AddressService.java
+C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\web\PizzaController.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\OrderRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\CustomerService.java
+C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\PizzaService.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\impl\TestOrderRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\Customer.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\Pizza.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\impl\BenchmarkBeanPostProcessor.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\PizzaRepository.java
+C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\impl\PizzaServiceImpl.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\web\HelloSpringMVC.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\impl\JPAAddressRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\impl\SimpleOrderService.java
@@ -27,7 +30,6 @@ C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\PizzaApp.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\impl\JPACustomerRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\impl\ObjectFactory.java
-C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\impl\PizzaService.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\Benchmark.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\AccumulativeCard.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\services\AccumulativeCardService.java

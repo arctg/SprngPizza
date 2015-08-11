@@ -26,8 +26,14 @@
             <td><c:out value="${pizza.pizzaType}"/></td>
             <td>
                 <FORM action="edit" method="POST">
-                    <INPUT TYPE="hidden" name="id" value="${pizza.id}">
-                    <INPUT TYPE="submit" value="edit">
+                    <INPUT type="hidden" name="id" value="${pizza.id}">
+                    <INPUT type="submit" value="edit">
+                </FORM>
+            </td>
+            <td>
+                <FORM action="delete" method="POST">
+                    <INPUT type="hidden" name="id" value="${pizza.id}">
+                    <INPUT type="submit" value="delete">
                 </FORM>
             </td>
         </tr>

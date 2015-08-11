@@ -3,6 +3,7 @@ package com.epam.pizza.web;
 import com.epam.pizza.domain.Pizza;
 import com.epam.pizza.domain.PizzaType;
 import com.epam.pizza.repository.PizzaRepository;
+import com.epam.pizza.services.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PizzaController {
 
     @Autowired
-    private PizzaRepository pizzaService;
+    private PizzaService pizzaService;
 
     @RequestMapping(value = "/pizzas", method = RequestMethod.GET)
     public String viewPizzas(Model model) {
@@ -53,4 +54,13 @@ public class PizzaController {
         System.out.println(pizza.getId());
         return addNewPizza(model);
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String deletePizza(Model model, @RequestParam(value = "id") Integer id){
+        pizzaService.delete(id);
+        model.addAttribute("pizzaTypes", PizzaType.values());
+        return viewPizzas(model);
+    }
+
+
 }

@@ -7,7 +7,6 @@ com\epam\pizza\repository\AddressRepository.class
 com\epam\pizza\services\impl\SimpleOrderService.class
 com\epam\pizza\domain\PizzaType.class
 com\epam\pizza\repository\impl\TestOrderRepository.class
-com\epam\pizza\services\impl\PizzaService.class
 com\epam\pizza\AppJPARunner.class
 com\epam\pizza\services\AddressService.class
 com\epam\pizza\SpringPizzaApp.class
@@ -25,6 +24,7 @@ com\epam\pizza\infrastructure\impl\ProxyForBenchmarkAnnotation.class
 com\epam\pizza\PizzaApp.class
 com\epam\pizza\infrastructure\impl\JavaConfigApplicationContext$BeanBuilder.class
 com\epam\pizza\repository\CustomerRepository.class
+com\epam\pizza\services\impl\PizzaServiceImpl.class
 com\epam\pizza\services\CustomerService.class
 com\epam\pizza\services\OrderService.class
 com\epam\pizza\domain\Customer.class
@@ -36,4 +36,5 @@ com\epam\pizza\domain\Address.class
 com\epam\pizza\domain\Order.class
 com\epam\pizza\domain\TotalOrderCostCalculator.class
 com\epam\pizza\infrastructure\impl\BenchmarkBeanPostProcessor.class
+com\epam\pizza\services\PizzaService.class
 com\epam\pizza\infrastructure\impl\JavaConfig.class

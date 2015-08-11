@@ -49,7 +49,7 @@ public class TestPizzaRepository implements PizzaRepository {
         return null;
     }
 
-    public void update(Pizza pizza){
+    public void update(Pizza pizza){}
 
-    }
+    public void delete(Integer id){}
 }

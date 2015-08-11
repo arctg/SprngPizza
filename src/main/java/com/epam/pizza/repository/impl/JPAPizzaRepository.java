@@ -46,5 +46,11 @@ public class JPAPizzaRepository implements PizzaRepository {
         em.merge(pizza);
     }
 
+    @Override
+    @Transactional
+    public void delete (Integer id){
+        em.remove(getPizzaById(id));
+    }
+
 
 }
