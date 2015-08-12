@@ -25,4 +25,28 @@ public class PizzaOrder {
     @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
+
+    public Integer getPizzaOrderId() {
+        return pizzaOrderId;
+    }
+
+    public void setPizzaOrderId(Integer pizzaOrderId) {
+        this.pizzaOrderId = pizzaOrderId;
+    }
+
+    public Map<Pizza, Integer> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(Map<Pizza, Integer> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

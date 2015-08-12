@@ -1,4 +1,5 @@
 com\epam\pizza\repository\impl\TestPizzaRepository.class
+com\epam\pizza\web\RESTController$1.class
 com\epam\pizza\domain\AccumulativeCard.class
 com\epam\pizza\infrastructure\impl\ProxyForBenchmarkAnnotation$1.class
 com\epam\pizza\repository\impl\JPACustomerRepository.class
@@ -14,9 +15,10 @@ com\epam\pizza\domain\PizzaOrder.class
 com\epam\pizza\infrastructure\impl\ObjectFactory.class
 com\epam\pizza\domain\Pizza.class
 com\epam\pizza\infrastructure\impl\JavaConfigApplicationContext.class
+com\epam\pizza\web\PizzaController$1.class
+com\epam\pizza\web\RESTController.class
 com\epam\pizza\infrastructure\Benchmark.class
 com\epam\pizza\repository\impl\JPAPizzaRepository.class
-com\epam\pizza\web\HelloSpringMVC.class
 com\epam\pizza\services\AccumulativeCardService.class
 com\epam\pizza\repository\PizzaRepository.class
 com\epam\pizza\repository\OrderRepository.class
@@ -34,6 +36,7 @@ com\epam\pizza\infrastructure\ApplicationContext.class
 com\epam\pizza\repository\impl\JPAAddressRepository.class
 com\epam\pizza\domain\Address.class
 com\epam\pizza\domain\Order.class
+com\epam\pizza\web\AbstractController.class
 com\epam\pizza\domain\TotalOrderCostCalculator.class
 com\epam\pizza\infrastructure\impl\BenchmarkBeanPostProcessor.class
 com\epam\pizza\services\PizzaService.class

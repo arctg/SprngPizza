@@ -26,5 +26,6 @@
     <input type="hidden" name="id" value="${pizza.id}">
     <input type="submit" value="Submit"/>
 </form>
+<a href="<c:url value="/jsp/pizzas"/>">Back to pizzas list</a>
 </body>
 </html>
