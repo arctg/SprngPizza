@@ -11,21 +11,43 @@
 <head>
     <title></title>
 </head>
-<body>
+<br>
 <form action="order" method="post">
-    Your name: <input type="text" name="name" value="${sessionScope.customer.name}">
+    Your name: <input type="text" name="customer" value="">
     <br/>
     Pizza:
-    <select name="pizzaType" id="input">
+    <select name="id" id="input">
         <c:forEach var="item" items="${pizzas}">
             <option value="${item.id}" ${item == pizza.pizzaType ? 'selected="selected"' : ''}>${item.name} ${item.pizzaType} ${item.price}</option>
         </c:forEach>
     </select>
     <br/>
-    Pizzas count: <input type="number" name="price" value=""/>
+    Pizzas count: <input type="number" name="count" min="1" max="10" value=""/>
     <br/>
     <input type="hidden" name="id" value="${pizza.id}">
     <input type="submit" value="Add to order"/>
+</form>
+Your order:</br>
+<table border="1" style="border-style: solid;">
+    <td><c:out value="id"/></td>
+    <td><c:out value="name"/></td>
+    <td><c:out value="price"/></td>
+    <td><c:out value="type"/></td>
+    <td><c:out value="count"/></td>
+    <c:forEach items="${pizzasToOrder}" var="entry">
+        <tr>
+            <td><c:out value="${entry.key.id}"/></td>
+            <td><c:out value="${entry.key.name}"/></td>
+            <td><c:out value="${entry.key.price}"/></td>
+            <td><c:out value="${entry.key.pizzaType}"/></td>
+            <td><c:out value="${entry.value}"/></td>
+        </tr>
+    </c:forEach>
+</table>
+Summ: <c:out value="${summ}"/> </br>
+<c:out value="${msg}"/>
+<form action="submit" method="post">
+    <input type="submit" value="confirm order"/>
 </form>
 <a href="<c:url value="/jsp/pizzas"/>">Back to pizzas list</a>
 </body>

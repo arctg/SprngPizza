@@ -11,18 +11,13 @@
     <context:component-scan base-package="com.epam.pizza.services"/>
     <!--<context:component-scan base-package="com.epam.pizza.domain"/>-->
 
-
-
-
-
-
     <!--<bean name="pizzaRepository" class="com.epam.pizza.repository.impl.TestPizzaRepository"/>-->
     <!--<bean name="orderRepository" class="com.epam.pizza.repository.impl.TestOrderRepository"/>-->
 
     <!--<bean class="com.epam.pizza.infrastructure.impl.BenchmarkBeanPostProcessor"/>-->
 
     <!--<bean name="orderService" class="com.epam.pizza.services.impl.SimpleOrderService">-->
-        <!--<lookup-method name="getNewOrder" bean="order"/>-->
+    <!--<lookup-method name="getNewOrder" bean="order"/>-->
     <!--</bean>-->
 
     <!--<bean name="order" class="com.epam.pizza.domain.Order" scope="prototype" destroy-method="destroy"/>-->

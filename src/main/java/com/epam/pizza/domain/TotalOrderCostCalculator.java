@@ -26,6 +26,7 @@ public class TotalOrderCostCalculator {
             if (count > 4) {
                 summ = summ - discount * max;
             }
+            if (count>10) throw new IllegalArgumentException();
         }
 
         return summ;
