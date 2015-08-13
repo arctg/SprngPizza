@@ -69,11 +69,11 @@
       <file leaf-file-name="PizzaController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/pizza/web/PizzaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82828283">
-              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.9713805">
+              <caret line="128" column="50" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
               <folding>
-                <element signature="e#5520#5521#0" expanded="true" />
-                <element signature="e#5572#5573#0" expanded="true" />
+                <element signature="e#5537#5538#0" expanded="true" />
+                <element signature="e#5589#5590#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -718,7 +718,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1349,12 +1349,12 @@
       <workItem from="1439399709972" duration="44000" />
       <workItem from="1439400902009" duration="3173000" />
       <workItem from="1439414511990" duration="8957000" />
-      <workItem from="1439464853492" duration="18148000" />
+      <workItem from="1439464853492" duration="18522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221289000" />
+    <option name="totallyTimeSpent" value="221663000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1550,6 +1550,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="82" column="1" selection-start-line="7" selection-start-column="0" selection-end-line="82" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1832,11 +1833,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/pizza/web/PizzaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82828283">
-          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.9713805">
+          <caret line="128" column="50" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
           <folding>
-            <element signature="e#5520#5521#0" expanded="true" />
-            <element signature="e#5572#5573#0" expanded="true" />
+            <element signature="e#5537#5538#0" expanded="true" />
+            <element signature="e#5589#5590#0" expanded="true" />
           </folding>
         </state>
       </provider>
