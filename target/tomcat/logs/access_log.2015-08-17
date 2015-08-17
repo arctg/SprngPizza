@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:02:54 +0300] "GET /New/jsp/order HTTP/1.1" 302 - http-bio-8080-exec-1 384
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:02:54 +0300] "GET /New/login HTTP/1.1" 200 539 http-bio-8080-exec-2 10
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:02:55 +0300] "POST /New/login HTTP/1.1" 302 - http-bio-8080-exec-3 7
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:02:57 +0300] "GET /New/jsp/order HTTP/1.1" 200 1262 http-bio-8080-exec-4 1710
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:03:00 +0300] "POST /New/jsp/order HTTP/1.1" 200 1435 http-bio-8080-exec-5 58
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:03:02 +0300] "POST /New/jsp/order HTTP/1.1" 200 357 http-bio-8080-exec-6 389
+0:0:0:0:0:0:0:1 - - [17/Aug/2015:17:03:17 +0300] "GET /New/jsp/order HTTP/1.1" 200 1430 http-bio-8080-exec-7 10

@@ -4,10 +4,13 @@ com\epam\pizza\AppJPARunner.class
 com\epam\pizza\services\AddressService.class
 com\epam\pizza\domain\Pizza.class
 com\epam\pizza\infrastructure\impl\JavaConfigApplicationContext.class
+com\epam\pizza\web\GlobalErrorHandler.class
 com\epam\pizza\repository\impl\JPAOrderRepository.class
 com\epam\pizza\web\PizzaController$1.class
 com\epam\pizza\repository\impl\JPAPizzaRepository.class
+com\epam\pizza\repository\impl\JPAPizzaOrderRepository.class
 com\epam\pizza\infrastructure\impl\ProxyForBenchmarkAnnotation.class
+com\epam\pizza\services\impl\PizzaOrderServiceImpl.class
 com\epam\pizza\services\OrderService.class
 com\epam\pizza\infrastructure\Config.class
 com\epam\pizza\web\PizzaController.class
@@ -18,7 +21,7 @@ com\epam\pizza\infrastructure\impl\JavaConfig.class
 com\epam\pizza\repository\impl\TestPizzaRepository.class
 com\epam\pizza\web\RESTController$1.class
 com\epam\pizza\domain\AccumulativeCard.class
-com\epam\pizza\services\impl\PizzaOrderService.class
+com\epam\pizza\web\PizzaNotFoundException.class
 com\epam\pizza\repository\AddressRepository.class
 com\epam\pizza\services\impl\SimpleOrderService.class
 com\epam\pizza\domain\PizzaType.class
@@ -26,8 +29,10 @@ com\epam\pizza\repository\impl\TestOrderRepository.class
 com\epam\pizza\SpringPizzaApp.class
 com\epam\pizza\domain\PizzaOrder.class
 com\epam\pizza\infrastructure\impl\ObjectFactory.class
+com\epam\pizza\services\PizzaOrderService.class
 com\epam\pizza\repository\PizzaOrderRepository.class
 com\epam\pizza\web\RESTController.class
+com\epam\pizza\web\MoreThanLimitPizzasException.class
 com\epam\pizza\infrastructure\Benchmark.class
 com\epam\pizza\services\AccumulativeCardService.class
 com\epam\pizza\repository\PizzaRepository.class

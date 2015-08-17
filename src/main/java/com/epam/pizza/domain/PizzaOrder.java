@@ -22,7 +22,7 @@ public class PizzaOrder {
     @MapKeyJoinColumn(name="pizza_id")
     @Column(name="pizzas_count")
     private Map<Pizza,Integer> pizzas;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -48,5 +48,14 @@ public class PizzaOrder {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "PizzaOrder{" +
+                "pizzaOrderId=" + pizzaOrderId +
+                ", pizzas=" + pizzas +
+                ", address=" + address +
+                '}';
     }
 }

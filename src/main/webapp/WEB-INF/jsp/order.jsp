@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: dennis
@@ -9,12 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Choose the pizza</title>
 </head>
 <br>
 <form action="order" method="post">
-    Your name: <input type="text" name="customer" value="">
-    <br/>
     Pizza:
     <select name="id" id="input">
         <c:forEach var="item" items="${pizzas}">
@@ -22,10 +21,11 @@
         </c:forEach>
     </select>
     <br/>
-    Pizzas count: <input type="number" name="count" min="1" max="10" value=""/>
+    Pizzas count: <input required type="number" name="count" min="1" max="10" value=""/>
     <br/>
     <input type="hidden" name="id" value="${pizza.id}">
     <input type="submit" value="Add to order"/>
+    <sec:csrfInput/>
 </form>
 Your order:</br>
 <table border="1" style="border-style: solid;">
@@ -47,7 +47,8 @@ Your order:</br>
 Summ: <c:out value="${summ}"/> </br>
 <c:out value="${msg}"/>
 <form action="submit" method="post">
-    <input type="submit" value="confirm order"/>
+    <input type="submit" value="OK"/>
+    <sec:csrfInput/>
 </form>
 <a href="<c:url value="/jsp/pizzas"/>">Back to pizzas list</a>
 </body>

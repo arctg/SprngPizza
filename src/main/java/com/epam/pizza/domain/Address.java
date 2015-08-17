@@ -80,4 +80,16 @@ public class Address {
     public void setPorch(String porch) {
         this.porch = porch;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                ", apartment='" + apartment + '\'' +
+                ", porch='" + porch + '\'' +
+                '}';
+    }
 }

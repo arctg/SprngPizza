@@ -25,6 +25,7 @@
     </select><br/>
     <input type="hidden" name="id" value="${pizza.id}">
     <input type="submit" value="Submit"/>
+    <INPUT type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 </form>
 <a href="<c:url value="/jsp/pizzas"/>">Back to pizzas list</a>
 </body>

@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - sprngpizza@localhost" uuid="f9589bc6-1c3a-4310-ad0b-3814e4368220">
-    <database-info product="MySQL" version="5.5.43-0+deb8u1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+    <database-info product="MySQL" version="5.5.44-0+deb8u1-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="sprngpizza"/>
-    <table name="PizzaOrder" schema="" catalog="sprngpizza" type="TABLE">
-      <column name="pizzaOrderId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="pizzaId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="pizzaOrderId"/>
+    <table name="accucards" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="card_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="accumulatedSumm" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="address_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="card_id"/>
+      <foreign-key name="FK_4ixw89axtud5c8lgmxbshiae5" columns="address_id" ref-table="addresses" ref-schema="" ref-catalog="sprngpizza" ref-columns="address_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_ljy36x1byyabm4xlt61vsyy30" table="customers" schema="" catalog="sprngpizza" columns="card_id"/>
+      <index name="FK_4ixw89axtud5c8lgmxbshiae5" unique="false" columns="address_id"/>
+    </table>
+    <table name="addresses" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="address_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="apartment" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="building" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="porch" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="street" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="address_id"/>
+      <exported-key name="FK_4ixw89axtud5c8lgmxbshiae5" table="accucards" schema="" catalog="sprngpizza" columns="address_id"/>
+      <exported-key name="FK_c9yf3tm1ujup5dwx68evogmd3" table="pizzaorder" schema="" catalog="sprngpizza" columns="address_id"/>
+    </table>
+    <table name="customers" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="card_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="customer_id"/>
+      <foreign-key name="FK_ljy36x1byyabm4xlt61vsyy30" columns="card_id" ref-table="accucards" ref-schema="" ref-catalog="sprngpizza" ref-columns="card_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_ljy36x1byyabm4xlt61vsyy30" unique="false" columns="card_id"/>
+    </table>
+    <table name="pizzaorder" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="order_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="address_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="order_id"/>
+      <foreign-key name="FK_c9yf3tm1ujup5dwx68evogmd3" columns="address_id" ref-table="addresses" ref-schema="" ref-catalog="sprngpizza" ref-columns="address_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_mc2qxflpfw14e3xsooy51aaow" table="pizzas_and_count" schema="" catalog="sprngpizza" columns="PizzaOrder_order_id"/>
+      <index name="FK_c9yf3tm1ujup5dwx68evogmd3" unique="false" columns="address_id"/>
     </table>
     <table name="pizzas" schema="" catalog="sprngpizza" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -19,6 +49,16 @@
       <column name="price" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_ovb692ctekyjmfndfxwclejy0" table="pizzas_and_count" schema="" catalog="sprngpizza" columns="pizza_id"/>
+    </table>
+    <table name="pizzas_and_count" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="PizzaOrder_order_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pizzas_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pizza_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="PizzaOrder_order_id,pizza_id"/>
+      <foreign-key name="FK_mc2qxflpfw14e3xsooy51aaow" columns="PizzaOrder_order_id" ref-table="pizzaorder" ref-schema="" ref-catalog="sprngpizza" ref-columns="order_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_ovb692ctekyjmfndfxwclejy0" columns="pizza_id" ref-table="pizzas" ref-schema="" ref-catalog="sprngpizza" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_ovb692ctekyjmfndfxwclejy0" unique="false" columns="pizza_id"/>
     </table>
   </data-source>
 </component>

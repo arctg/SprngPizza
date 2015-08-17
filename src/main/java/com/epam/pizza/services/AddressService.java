@@ -7,4 +7,5 @@ import com.epam.pizza.domain.Address;
  */
 public interface AddressService {
     Address getAddressById(Integer id);
+
 }
