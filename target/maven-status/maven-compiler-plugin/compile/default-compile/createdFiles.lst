@@ -1,5 +1,6 @@
 com\epam\pizza\infrastructure\impl\ProxyForBenchmarkAnnotation$1.class
 com\epam\pizza\repository\impl\JPACustomerRepository.class
+com\epam\pizza\domain\Roles.class
 com\epam\pizza\AppJPARunner.class
 com\epam\pizza\services\AddressService.class
 com\epam\pizza\domain\Pizza.class
@@ -46,5 +47,7 @@ com\epam\pizza\domain\Customer.class
 com\epam\pizza\infrastructure\ApplicationContext.class
 com\epam\pizza\repository\impl\JPAAddressRepository.class
 com\epam\pizza\domain\Address.class
+com\epam\pizza\services\impl\CustomerServiceImpl.class
 com\epam\pizza\web\AbstractController.class
 com\epam\pizza\infrastructure\impl\BenchmarkBeanPostProcessor.class
+com\epam\pizza\domain\MD5.class

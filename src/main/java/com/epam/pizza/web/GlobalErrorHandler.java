@@ -19,6 +19,7 @@ public class GlobalErrorHandler {
             HttpServletRequest req) {
         ModelAndView model = new ModelAndView("error");
         model.addObject("ex", exception);
+        model.addObject("st",Thread.currentThread().getStackTrace());
         model.addObject("url", req.getRequestURL());
         return model;
     }

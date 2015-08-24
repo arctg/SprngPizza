@@ -1,5 +1,6 @@
 package com.epam.pizza.web;
 
+import com.epam.pizza.services.CustomerService;
 import com.epam.pizza.services.PizzaOrderService;
 import com.epam.pizza.services.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public abstract class AbstractController {
     protected PizzaService pizzaService;
     @Autowired
     protected PizzaOrderService pizzaOrderService;
+    @Autowired
+    protected CustomerService customerService;
 
     protected abstract void pizzaBinder(WebDataBinder binder);
 

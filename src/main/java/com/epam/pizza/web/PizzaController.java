@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import java.beans.PropertyEditorSupport;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by dennis on 8/10/2015.
@@ -33,6 +36,7 @@ public class PizzaController extends AbstractController {
         return "pizzas";
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addNewPizza(Model model) {
         model.addAttribute("pizzaTypes", PizzaType.values());
@@ -108,7 +112,6 @@ public class PizzaController extends AbstractController {
                                    @ModelAttribute HashMap<Pizza, Integer> pizzasToOrder) {
 
         TotalOrderCostCalculator totalOrderCostCalculator = new TotalOrderCostCalculator();
-
         if (totalOrderCostCalculator.getPizzasCount(pizzasToOrder) + count > totalOrderCostCalculator.getLimit()) {
             throw new MoreThanLimitPizzasException("Oops");
         } else {
@@ -116,14 +119,11 @@ public class PizzaController extends AbstractController {
                 pizzasToOrder.put(getPizzaById(id), pizzasToOrder.get(getPizzaById(id)) + count);
             } else pizzasToOrder.put(getPizzaById(id), count);
         }
-
         System.out.println("Pizza: " + getPizzaById(id) + "___" + "count: " + count);
         System.out.println(pizzasToOrder);
         System.out.println(pizzasToOrder.size());
-
         model.addAttribute("summ", totalOrderCostCalculator.calculateTotalOrderPrice(pizzasToOrder));
         model.addAttribute("pizzasToOrder", pizzasToOrder);
-
         return goToOrder(model);
     }
 
@@ -153,6 +153,50 @@ public class PizzaController extends AbstractController {
         request.getSession().invalidate();
         model.addAttribute("pizzasToOrder", null);
         return goToOrder(model);
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String viewUsers(Model model) {
+        model.addAttribute("users", customerService.getAll());
+        model.addAttribute("roleTypes", Roles.values());
+        Object authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("auth", authorities);
+        model.addAttribute("prin", principal);
+        return "users";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/adduser", method = RequestMethod.GET)
+    public String goToAddNewUserForm(Model model) {
+        model.addAttribute("roles", Roles.values());
+        return "adduser";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "adduser", method = RequestMethod.POST)
+    public String addNewUser(Model model,
+//                             @ModelAttribute Customer newCustomer,
+                             @RequestParam(value = "blocked", required = false) Boolean blocked,
+                             @RequestParam(value = "ROLE_ADMIN", required = false) Boolean adminRole,
+                             @RequestParam(value = "ROLE_USER", required = false) Boolean userRole,
+                             @RequestParam(value = "name",required = true) String name,
+                             @RequestParam(value = "password",required = true) String password)
+
+    {
+        Customer newCustomer = new Customer();
+        List<Roles> roles = new ArrayList<>();
+        if (blocked == null) blocked = false;
+        if (adminRole!=null) {
+            roles.add(Roles.ROLE_ADMIN);
+            roles.add(Roles.ROLE_USER);
+        } else roles.add(Roles.ROLE_USER);
+        newCustomer.setName(name);
+        newCustomer.setBlocked(blocked);
+        newCustomer.setRoles(roles);
+        newCustomer.setPassword(password);
+        customerService.save(newCustomer);
+        return "users";
     }
 
     //put empty map into session(init); return type of method

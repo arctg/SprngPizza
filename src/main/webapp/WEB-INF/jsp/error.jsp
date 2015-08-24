@@ -16,5 +16,6 @@
         <h1>Something happened</h1>
         <c:if test="${url != null}"> URL: ${url} </c:if> </br>
         Exception: ${ex}
+        StackTrace: ${st}
     </body>
 </html>

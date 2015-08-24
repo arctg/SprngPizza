@@ -3,6 +3,7 @@ package com.epam.pizza.repository.impl;
 import com.epam.pizza.domain.Customer;
 import com.epam.pizza.repository.CustomerRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +31,21 @@ public class JPACustomerRepository implements CustomerRepository{
     }
 
     @Override
+    @Transactional
     public Integer save(Customer customer){
         em.persist(customer);
         return customer.getId();
+    }
+
+    @Override
+    @Transactional
+    public void update(Customer customer){
+        em.merge(customer);
+    }
+
+    @Override
+    @Transactional
+    public void delete (Integer id){
+        em.remove(getCustomerById(id));
     }
 }

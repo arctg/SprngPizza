@@ -7,6 +7,12 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="sprngpizza"/>
+    <table name="Customer_roles" schema="" catalog="sprngpizza" type="TABLE">
+      <column name="Customer_customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="roles" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <foreign-key name="FK_j65xid4ihrp3hkkahhbpph5v6" columns="Customer_customer_id" ref-table="customers" ref-schema="" ref-catalog="sprngpizza" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_j65xid4ihrp3hkkahhbpph5v6" unique="false" columns="Customer_customer_id"/>
+    </table>
     <table name="accucards" schema="" catalog="sprngpizza" type="TABLE">
       <column name="card_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="accumulatedSumm" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -29,10 +35,14 @@
     </table>
     <table name="customers" schema="" catalog="sprngpizza" type="TABLE">
       <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="blocked" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="card_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="customer_id"/>
       <foreign-key name="FK_ljy36x1byyabm4xlt61vsyy30" columns="card_id" ref-table="accucards" ref-schema="" ref-catalog="sprngpizza" ref-columns="card_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_j65xid4ihrp3hkkahhbpph5v6" table="Customer_roles" schema="" catalog="sprngpizza" columns="Customer_customer_id"/>
+      <index name="UK_to73biqfrti0j9f7k12l255w5" unique="true" columns="name"/>
       <index name="FK_ljy36x1byyabm4xlt61vsyy30" unique="false" columns="card_id"/>
     </table>
     <table name="pizzaorder" schema="" catalog="sprngpizza" type="TABLE">

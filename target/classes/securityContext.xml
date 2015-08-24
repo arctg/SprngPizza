@@ -17,7 +17,8 @@
 
     <http>
         <intercept-url pattern="/**" access="hasRole('USER')"/>
-        <form-login/>
+        <form-login username-parameter="name"
+                    password-parameter="password"/>
         <logout/>
     </http>
 
@@ -25,10 +26,14 @@
 
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="bob" password="bob" authorities="ROLE_USER,ROLE_ADMIN"/>
-                <user name="bruce" password="bruce" authorities="ROLE_USER"/>
-            </user-service>
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="SELECT name,password,if(blocked=false,1,0) as enabled FROM customers WHERE name=?"
+                               authorities-by-username-query="select customers.name,Customer_roles.roles from customers inner join Customer_roles on Customer_roles.Customer_customer_id=customers.customer_id WHERE name=?"/>
+
+            <!--<user-service>-->
+                <!--<user name="bob" password="bob" authorities="ROLE_USER,ROLE_ADMIN"/>-->
+                <!--<user name="bruce" password="bruce" authorities="ROLE_USER"/>-->
+            <!--</user-service>-->
         </authentication-provider>
     </authentication-manager>
 

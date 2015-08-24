@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dennis on 7/23/2015.
@@ -20,11 +21,17 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    Integer id;
+    private Integer id;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private List<Roles> roles;
+    Boolean blocked;
+    @Column(unique=true)
     String name;
     @OneToOne
     @JoinColumn(name="card_id")
     private AccumulativeCard accumulativeCard;
+    private String password;
 //    @OneToOne
 //    @JoinColumn(name="address_id")
 //    private Address address;
@@ -61,11 +68,38 @@ public class Customer {
         this.accumulativeCard = accumulativeCard;
     }
 
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
+                ", roles=" + roles +
+                ", blocked=" + blocked +
                 ", name='" + name + '\'' +
+                ", accumulativeCard=" + accumulativeCard +
                 '}';
     }
 }
