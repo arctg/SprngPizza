@@ -1,12 +1,16 @@
-package com.epam.pizza.services;
+package com.epam.pizza.repository;
 
 import com.epam.pizza.domain.AccumulativeCard;
 
+import java.util.List;
+
 /**
- * Created by dennis on 8/5/2015.
+ * Created by dennis on 8/24/2015.
  */
-public interface AccumulativeCardService {
+public interface AccumulativeCardRepository {
     public AccumulativeCard getAccumulativeCardById(Integer id);
+    public List<AccumulativeCard> getAllAccumulativeCards();
     public Integer save(AccumulativeCard accumulativeCard);
     public void update(AccumulativeCard accumulativeCard);
+    public void delete(Integer id);
 }

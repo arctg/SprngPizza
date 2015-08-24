@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by dennis on 8/4/2015.
  */
@@ -22,5 +24,13 @@ public class PizzaOrderServiceImpl implements PizzaOrderService{
         pizzaOrderRepository.save(pizzaOrder);
     }
 
+    public List<PizzaOrder> getPizzaOrdersByCustomerId(Integer id){
+        return pizzaOrderRepository.getPizzaOrdersByCustomerId(id);
+    }
+
+    @Override
+    public List<PizzaOrder> getAll() {
+        return pizzaOrderRepository.getAll();
+    }
 }
 

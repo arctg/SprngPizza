@@ -13,9 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import java.beans.PropertyEditorSupport;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.time.ZoneId;
+import java.util.*;
 
 /**
  * Created by dennis on 8/10/2015.
@@ -49,8 +48,12 @@ public class PizzaController extends AbstractController {
 //                              @RequestParam(value = "name", required = true) String name,
 //                              @RequestParam(value = "price" , required = true) Integer price,
 //                              @RequestParam(value = "pizzaType" , required = true) PizzaType pizzaType)
-    public String addNewPizza(Model model, @ModelAttribute Pizza newPizza) {
+    public String addNewPizza(Model model,
+                              @ModelAttribute Pizza newPizza,
+                              @RequestParam(value = "pricel", required = true) String price) {
         // pizzaService.save(new Pizza(name,price,pizzaType));
+        Float newPrice = Float.parseFloat(price) * 100;
+        newPizza.setPrice(newPrice.intValue());
         System.out.println(newPizza.getId());
         pizzaService.save(newPizza);
 //        return viewPizzas(model);
@@ -119,6 +122,7 @@ public class PizzaController extends AbstractController {
                 pizzasToOrder.put(getPizzaById(id), pizzasToOrder.get(getPizzaById(id)) + count);
             } else pizzasToOrder.put(getPizzaById(id), count);
         }
+
         System.out.println("Pizza: " + getPizzaById(id) + "___" + "count: " + count);
         System.out.println(pizzasToOrder);
         System.out.println(pizzasToOrder.size());
@@ -130,7 +134,14 @@ public class PizzaController extends AbstractController {
     @Secured("ROLE_USER")
     @RequestMapping(value = "submit", method = RequestMethod.POST)
     public String submit(Model model, @ModelAttribute HashMap<Pizza, Integer> pizzasToOrder) {
+        Integer customerId = customerService.getIdByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        Integer accumulatedSumm = customerService.getCustomerById(customerId).getAccumulativeCard().getAccumulatedSumm();
+        TotalOrderCostCalculator totalOrderCostCalculator = new TotalOrderCostCalculator();
+        if (accumulatedSumm == null) accumulatedSumm = 0;
+        Double discount = (double) accumulatedSumm;
         model.addAttribute("pizzasToOrder", pizzasToOrder);
+        model.addAttribute("discount", discount);
+        model.addAttribute("totalPrice", totalOrderCostCalculator.calculateTotalOrderPrice(pizzasToOrder));
         return "orderConfirmation";
     }
 
@@ -141,13 +152,23 @@ public class PizzaController extends AbstractController {
                                 @ModelAttribute Address newAddress,
                                 HttpServletRequest request,
                                 SessionStatus sessionStatus) {
+        Integer customerId = customerService.getIdByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        Integer accumulatedSumm = customerService.getCustomerById(customerId).getAccumulativeCard().getAccumulatedSumm();
+        if (accumulatedSumm == null) accumulatedSumm = 0;
         model.addAttribute("pizzasToOrder", pizzasToOrder);
+        TotalOrderCostCalculator totalOrderCostCalculator = new TotalOrderCostCalculator();
         PizzaOrder pizzaOrder = new PizzaOrder();
         pizzaOrder.setAddress(newAddress);
         pizzaOrder.setPizzas(pizzasToOrder);
-        System.out.println(newAddress);
-        System.out.println(pizzaOrder);
+        Double sum = totalOrderCostCalculator.calculateTotalOrderPrice(pizzasToOrder) * 100 - accumulatedSumm / 100;
+        pizzaOrder.setSumm(sum.longValue());
+        pizzaOrder.setCustomerId(customerId);
+        accumulatedSumm = accumulatedSumm + sum.intValue();
+        pizzaOrder.setOrderDateTime(new GregorianCalendar(TimeZone.getTimeZone(ZoneId.systemDefault())));
         pizzaOrderService.save(pizzaOrder);
+        Customer customer = customerService.getCustomerById(customerId);
+        customer.getAccumulativeCard().setAccumulatedSumm(accumulatedSumm);
+        customerService.update(customer);
         System.out.println(request.getSession().getId());
         sessionStatus.setComplete();
         request.getSession().invalidate();
@@ -155,6 +176,7 @@ public class PizzaController extends AbstractController {
         return goToOrder(model);
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String viewUsers(Model model) {
         model.addAttribute("users", customerService.getAll());
@@ -180,14 +202,13 @@ public class PizzaController extends AbstractController {
                              @RequestParam(value = "blocked", required = false) Boolean blocked,
                              @RequestParam(value = "ROLE_ADMIN", required = false) Boolean adminRole,
                              @RequestParam(value = "ROLE_USER", required = false) Boolean userRole,
-                             @RequestParam(value = "name",required = true) String name,
-                             @RequestParam(value = "password",required = true) String password)
-
-    {
+                             @RequestParam(value = "name", required = true) String name,
+                             @RequestParam(value = "password", required = true) String password) {
         Customer newCustomer = new Customer();
+        AccumulativeCard accumulativeCard = new AccumulativeCard();
         List<Roles> roles = new ArrayList<>();
         if (blocked == null) blocked = false;
-        if (adminRole!=null) {
+        if (adminRole != null) {
             roles.add(Roles.ROLE_ADMIN);
             roles.add(Roles.ROLE_USER);
         } else roles.add(Roles.ROLE_USER);
@@ -195,8 +216,26 @@ public class PizzaController extends AbstractController {
         newCustomer.setBlocked(blocked);
         newCustomer.setRoles(roles);
         newCustomer.setPassword(password);
+        newCustomer.setAccumulativeCard(accumulativeCard);
         customerService.save(newCustomer);
         return "users";
+    }
+
+    @Secured("ROLE_USER")
+    @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
+    public String goToCabinet(Model model) {
+        Integer id = customerService.getIdByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("orders", pizzaOrderService.getPizzaOrdersByCustomerId(id));
+        model.addAttribute("accumulativeCard", accumulativeCardService.getAccumulativeCardById(id));
+        return "cabinet";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String goToAdminPanel(Model model) {
+        Integer id = customerService.getIdByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("orders", pizzaOrderService.getAll());
+        return "admin";
     }
 
     //put empty map into session(init); return type of method

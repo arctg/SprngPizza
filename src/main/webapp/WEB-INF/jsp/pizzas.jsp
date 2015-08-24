@@ -28,7 +28,7 @@ Roles:
         <tr>
             <td><c:out value="${pizza.id}"/></td>
             <td><c:out value="${pizza.name}"/></td>
-            <td><c:out value="${pizza.price}"/></td>
+            <td><c:out value="${pizza.price/100}"/></td>
             <td><c:out value="${pizza.pizzaType}"/></td>
             <td>
                 <FORM action="edit" method="POST">

@@ -17,7 +17,7 @@
     Pizza:
     <select name="id" id="input">
         <c:forEach var="item" items="${pizzas}">
-            <option value="${item.id}" ${item == pizza.pizzaType ? 'selected="selected"' : ''}>${item.name} ${item.pizzaType} ${item.price}</option>
+            <option value="${item.id}" ${item == pizza.pizzaType ? 'selected="selected"' : ''}>${item.name} ${item.pizzaType} ${item.price/100}</option>
         </c:forEach>
     </select>
     <br/>
@@ -38,7 +38,7 @@ Your order:</br>
         <tr>
             <td><c:out value="${entry.key.id}"/></td>
             <td><c:out value="${entry.key.name}"/></td>
-            <td><c:out value="${entry.key.price}"/></td>
+            <td><c:out value="${entry.key.price/100}"/></td>
             <td><c:out value="${entry.key.pizzaType}"/></td>
             <td><c:out value="${entry.value}"/></td>
         </tr>

@@ -12,7 +12,7 @@
 <head>
     <title>Confirm order</title>
 </head>
-<body>
+<br>
 Your order:</br>
 <table border="1" style="border-style: solid;">
   <td><c:out value="id"/></td>
@@ -24,12 +24,18 @@ Your order:</br>
     <tr>
       <td><c:out value="${entry.key.id}"/></td>
       <td><c:out value="${entry.key.name}"/></td>
-      <td><c:out value="${entry.key.price}"/></td>
+      <td><c:out value="${entry.key.price/100}"/></td>
       <td><c:out value="${entry.key.pizzaType}"/></td>
       <td><c:out value="${entry.value}"/></td>
     </tr>
   </c:forEach>
 </table>
+
+Total price:</br>
+<c:out value="${totalPrice}"/> </br>
+Your discount:</br>
+<c:out value="${discount/100}"/> </br>
+
 
 <form action="confirm" method="post">
   City:<input type="text" name="city" min="1" max="32" value=""/>

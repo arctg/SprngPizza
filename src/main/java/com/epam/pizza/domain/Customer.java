@@ -1,5 +1,8 @@
 package com.epam.pizza.domain;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -15,6 +18,7 @@ import java.util.Set;
 @Table(name = "customers")
 @NamedQueries({
         @NamedQuery(name = "Customer.getAll", query = "select c from Customer c"),
+        @NamedQuery(name = "Customer.getCustomerIdByName", query = "select c.id from Customer c where name=:name")
         //Other named query
 })
 public class Customer {
@@ -22,23 +26,26 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Integer id;
+    //    @LazyCollection(LazyCollectionOption.FALSE)
     @ElementCollection(fetch = FetchType.EAGER)
+    //@ElementCollection
     @Enumerated(EnumType.STRING)
     private List<Roles> roles;
-    Boolean blocked;
-    @Column(unique=true)
+    private Boolean blocked;
+    @Column(unique = true)
     String name;
-    @OneToOne
-    @JoinColumn(name="card_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id")
     private AccumulativeCard accumulativeCard;
     private String password;
 //    @OneToOne
 //    @JoinColumn(name="address_id")
 //    private Address address;
 
-    public Customer(){}
+    public Customer() {
+    }
 
-    public Customer(Integer id, String name, AccumulativeCard accumulativeCard){
+    public Customer(Integer id, String name, AccumulativeCard accumulativeCard) {
         this.id = id;
         this.name = name;
         this.accumulativeCard = accumulativeCard;

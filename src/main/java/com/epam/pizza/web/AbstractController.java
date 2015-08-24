@@ -1,5 +1,6 @@
 package com.epam.pizza.web;
 
+import com.epam.pizza.services.AccumulativeCardService;
 import com.epam.pizza.services.CustomerService;
 import com.epam.pizza.services.PizzaOrderService;
 import com.epam.pizza.services.PizzaService;
@@ -21,6 +22,8 @@ public abstract class AbstractController {
     protected PizzaOrderService pizzaOrderService;
     @Autowired
     protected CustomerService customerService;
+    @Autowired
+    protected AccumulativeCardService accumulativeCardService;
 
     protected abstract void pizzaBinder(WebDataBinder binder);
 

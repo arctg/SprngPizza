@@ -17,26 +17,26 @@ public class AccumulativeCard {
     @Column(name = "card_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne()
-    @JoinColumn(name="address_id")
-    private Address address;
+//    @OneToOne()
+//    @JoinColumn(name="address_id")
+//    private Address address;
     private Integer accumulatedSumm;
 
     public AccumulativeCard(){}
 
     public AccumulativeCard(Integer id, Address address, Integer accumulatedSumm) {
         this.id = id;
-        this.address = address;
+        //this.address = address;
         this.accumulatedSumm = accumulatedSumm;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
 
     public Integer getId() {
         return id;
@@ -52,5 +52,14 @@ public class AccumulativeCard {
 
     public void setAccumulatedSumm(Integer accumulatedSumm) {
         this.accumulatedSumm = accumulatedSumm;
+    }
+
+
+    @Override
+    public String toString() {
+        return "AccumulativeCard{" +
+                "id=" + id +
+                ", accumulatedSumm=" + accumulatedSumm +
+                '}';
     }
 }

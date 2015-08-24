@@ -20,10 +20,10 @@ public class TotalOrderCostCalculator {
             throw new IllegalArgumentException("There is more than 10 pizzas");
         } else {
             for (Map.Entry<Pizza, Integer> entry : pizzas.entrySet()) {
-                if (entry.getKey().getPrice() > max) {
-                    max = entry.getKey().getPrice();
+                if (entry.getKey().getPrice()/100 > max) {
+                    max = entry.getKey().getPrice()/100;
                 }
-                summ += entry.getKey().getPrice() * entry.getValue().intValue();
+                summ += entry.getKey().getPrice()/100 * entry.getValue().intValue();
             }
 //            System.out.println("Total count of pizzas: " + count);
             if (getPizzasCount(pizzas) > 4) {

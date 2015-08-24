@@ -41,4 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void delete(Integer id){
         customerRepository.delete(id);
     }
+
+    public Integer getIdByName(String name){
+        return customerRepository.getIdByName(name);
+    }
 }

@@ -1,3 +1,4 @@
+com\epam\pizza\services\impl\AccumulativeCardServiceImpl.class
 com\epam\pizza\infrastructure\impl\ProxyForBenchmarkAnnotation$1.class
 com\epam\pizza\repository\impl\JPACustomerRepository.class
 com\epam\pizza\domain\Roles.class
@@ -16,6 +17,7 @@ com\epam\pizza\services\OrderService.class
 com\epam\pizza\infrastructure\Config.class
 com\epam\pizza\web\PizzaController.class
 com\epam\pizza\domain\Order.class
+com\epam\pizza\repository\AccumulativeCardRepository.class
 com\epam\pizza\domain\TotalOrderCostCalculator.class
 com\epam\pizza\services\PizzaService.class
 com\epam\pizza\infrastructure\impl\JavaConfig.class
@@ -36,6 +38,7 @@ com\epam\pizza\web\RESTController.class
 com\epam\pizza\web\MoreThanLimitPizzasException.class
 com\epam\pizza\infrastructure\Benchmark.class
 com\epam\pizza\services\AccumulativeCardService.class
+com\epam\pizza\repository\impl\JPAAccumulativeCard.class
 com\epam\pizza\repository\PizzaRepository.class
 com\epam\pizza\repository\OrderRepository.class
 com\epam\pizza\PizzaApp.class

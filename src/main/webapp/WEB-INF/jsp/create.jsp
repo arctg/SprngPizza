@@ -15,7 +15,7 @@
 <form action="create" method="post">
     Name of pizza: <input type="text" name="name" value="${pizza.name}">
     <br/>
-    Pizzas price: <input type="number" name="price" value="${pizza.price}"/>
+    Pizzas price: <input type="text" name="pricel" value="${pizza.price/100}" pattern="\d+(\.\d{1,2})?"/>
     <br/>
     Pizzas type:
     <select name="pizzaType" id="input" >

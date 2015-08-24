@@ -40,6 +40,7 @@ public class JPACustomerRepository implements CustomerRepository{
     @Override
     @Transactional
     public void update(Customer customer){
+        System.out.println("Hello from update!");
         em.merge(customer);
     }
 
@@ -47,5 +48,12 @@ public class JPACustomerRepository implements CustomerRepository{
     @Transactional
     public void delete (Integer id){
         em.remove(getCustomerById(id));
+    }
+
+    @Override
+    public Integer getIdByName(String name){
+        TypedQuery<Integer> query =
+                em.createNamedQuery("Customer.getCustomerIdByName",Integer.class).setParameter("name",name);
+        return query.getSingleResult();
     }
 }
