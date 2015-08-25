@@ -2,6 +2,8 @@ package com.epam.pizza.domain;
 
 import com.epam.pizza.templates.RepositoryTestsTemplate;
 import org.junit.Test;
+import org.mockito.Mock;
+
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 /**
  * Created by dennis on 8/3/2015.
  */
+
 
 public class TotalOrderCostCalculatorTest{
 
@@ -27,7 +30,7 @@ public class TotalOrderCostCalculatorTest{
         int pizzaPrice = 200;
         map.put(new Pizza(1,"Margo",pizzaPrice,PizzaType.MEAT),1);
 
-        int expectedPrice = 200;
+        int expectedPrice = 2;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
@@ -43,7 +46,7 @@ public class TotalOrderCostCalculatorTest{
         pizzaPrice = 300;
         map.put(new Pizza(1,"Bull",pizzaPrice,PizzaType.SEA),1);
 
-        int expectedPrice = 500;
+        int expectedPrice = 5;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
@@ -60,7 +63,7 @@ public class TotalOrderCostCalculatorTest{
         pizzaPrice = 200;
         map.put(new Pizza(1,"Bull",pizzaPrice,PizzaType.SEA),2);
 
-        int expectedPrice = 600;
+        int expectedPrice = 6;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
@@ -76,7 +79,7 @@ public class TotalOrderCostCalculatorTest{
         pizzaPrice = 400;
         map.put(new Pizza(1,"Bull",pizzaPrice,PizzaType.SEA),2);
 
-        int expectedPrice = 1200;
+        int expectedPrice = 12;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
@@ -89,7 +92,7 @@ public class TotalOrderCostCalculatorTest{
         int pizzaPrice = 200;
         map.put(new Pizza(1,"Margo",pizzaPrice,PizzaType.MEAT),10);
 
-        int expectedPrice = 1940;
+        double expectedPrice = 19.4;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
@@ -109,12 +112,13 @@ public class TotalOrderCostCalculatorTest{
         pizzaPrice = 50;
         map.put(new Pizza(1,"Down",pizzaPrice,PizzaType.VEGETERIAN),1);
 
-        int expectedPrice = 690;
+        double expectedPrice = 6.4;
 
         TotalOrderCostCalculator calculator = new TotalOrderCostCalculator();
         double price = calculator.calculateTotalOrderPrice(map);
         assertEquals(expectedPrice,price,0.5);
 
     }
+
 
 }

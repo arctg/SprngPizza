@@ -1,14 +1,18 @@
 package com.epam.pizza.domain;
 
+import org.mockito.Mock;
+
 import java.util.Map;
 
 /**
  * Created by dennis on 8/3/2015.
  */
+
 public class TotalOrderCostCalculator {
 
     private int limit = 10; //max count of pizzas in one order
     private double discount = 0.3;
+
 
     public double calculateTotalOrderPrice(Map<Pizza, Integer> pizzas) {
 
