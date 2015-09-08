@@ -12,6 +12,7 @@ C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\Cust
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\Pizza.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\infrastructure\impl\BenchmarkBeanPostProcessor.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\PizzaRepository.java
+C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\TotalOrderCostCalculatorBigDecimal.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\impl\JPAAddressRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\repository\impl\TestPizzaRepository.java
 C:\Users\dennis\IdeaProjects\SprngPizza\src\main\java\com\epam\pizza\domain\Address.java
