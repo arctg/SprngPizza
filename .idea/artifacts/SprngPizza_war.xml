@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="SprngPizza:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="SpringPizza.war">
-      <element id="artifact" artifact-name="SprngPizza:war exploded" />
-    </root>
-  </artifact>
-</component>
